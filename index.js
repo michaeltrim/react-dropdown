@@ -115,6 +115,8 @@ class Dropdown extends Component {
     if (this.mounted) {
       if (!ReactDOM.findDOMNode(this).contains(event.target)) {
         this.setState({ isOpen: false })
+        event.stopPropagation();
+        event.preventDefault();
       }
     }
   }
