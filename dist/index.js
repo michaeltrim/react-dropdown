@@ -59,8 +59,8 @@ var Dropdown = function (_Component) {
         this.setState({ selected: newProps.value });
       } else if (!newProps.value && newProps.placeholder) {
         this.setState({ selected: { label: newProps.placeholder, value: '' } });
-      } else {
-        this.setState({ selected: { label: DEFAULT_PLACEHOLDER_STRING, value: '' } });
+        //} else {
+        //  this.setState({selected: { label: DEFAULT_PLACEHOLDER_STRING, value: '' }})
       }
     }
   }, {
