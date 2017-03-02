@@ -48,7 +48,7 @@ var Dropdown = function (_Component) {
     _this.mounted = true;
     _this.handleDocumentClick = _this.handleDocumentClick.bind(_this);
     _this.fireChangeEvent = _this.fireChangeEvent.bind(_this);
-    _this.onOptionSelect = _this.onOptionSelect.bind(_this);
+    _this.handleOptionSelect = _this.handleOptionSelect.bind(_this);
     return _this;
   }
 

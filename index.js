@@ -17,7 +17,7 @@ class Dropdown extends Component {
     this.mounted = true
     this.handleDocumentClick = this.handleDocumentClick.bind(this)
     this.fireChangeEvent = this.fireChangeEvent.bind(this)
-    this.onOptionSelect = this.onOptionSelect.bind(this)
+    this.handleOptionSelect = this.handleOptionSelect.bind(this)
   }
 
   componentWillReceiveProps (newProps) {
