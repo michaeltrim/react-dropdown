@@ -134,10 +134,8 @@ var Dropdown = function (_Component) {
           className: optionClass
           //onMouseDown={this.setValue.bind(this, value, label)}
           //onClick={this.setValue.bind(this, value, label)}
-          , onMouseDown: function onMouseDown(e) {
-            return _this2.handleOptionSelect(e, value, label);
-          },
-          onClick: function onClick(e) {
+          //onMouseDown={(e)=>this.handleOptionSelect(e,value, label)}
+          , onClick: function onClick(e) {
             return _this2.handleOptionSelect(e, value, label);
           }
 
