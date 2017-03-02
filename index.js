@@ -17,6 +17,7 @@ class Dropdown extends Component {
     this.mounted = true
     this.handleDocumentClick = this.handleDocumentClick.bind(this)
     this.fireChangeEvent = this.fireChangeEvent.bind(this)
+    this.onOptionSelect = this.onOptionSelect.bind(this)
   }
 
   componentWillReceiveProps (newProps) {
@@ -52,6 +53,12 @@ class Dropdown extends Component {
     }
   }
 
+  handleOptionSelect(e, value, lable){
+    e.stopPropagation()
+    e.preventDefault()
+    this.setValue(value,label);
+  }
+
   setValue (value, label) {
     let newState = {
       selected: {
@@ -83,8 +90,12 @@ class Dropdown extends Component {
       <div
         key={value}
         className={optionClass}
-        onMouseDown={this.setValue.bind(this, value, label)}
-        onClick={this.setValue.bind(this, value, label)}>
+        //onMouseDown={this.setValue.bind(this, value, label)}
+        //onClick={this.setValue.bind(this, value, label)}
+        onMouseDown={(e)=>this.handleOptionSelect(e,value, label)}
+        onClick={(e)=>this.handleOptionSelect(e,value, label) }
+        
+        >
         {label}
       </div>
     )
@@ -115,8 +126,6 @@ class Dropdown extends Component {
     if (this.mounted) {
       if (!ReactDOM.findDOMNode(this).contains(event.target)) {
         this.setState({ isOpen: false })
-        event.stopPropagation()
-        event.preventDefault()
       }
     }
   }

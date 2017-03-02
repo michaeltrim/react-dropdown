@@ -48,6 +48,7 @@ var Dropdown = function (_Component) {
     _this.mounted = true;
     _this.handleDocumentClick = _this.handleDocumentClick.bind(_this);
     _this.fireChangeEvent = _this.fireChangeEvent.bind(_this);
+    _this.onOptionSelect = _this.onOptionSelect.bind(_this);
     return _this;
   }
 
@@ -89,6 +90,13 @@ var Dropdown = function (_Component) {
       }
     }
   }, {
+    key: 'handleOptionSelect',
+    value: function handleOptionSelect(e, value, lable) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setValue(value, label);
+    }
+  }, {
     key: 'setValue',
     value: function setValue(value, label) {
       var newState = {
@@ -111,7 +119,8 @@ var Dropdown = function (_Component) {
   }, {
     key: 'renderOption',
     value: function renderOption(option) {
-      var _classNames;
+      var _classNames,
+          _this2 = this;
 
       var optionClass = (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, this.props.baseClassName + '-option', true), _defineProperty(_classNames, 'is-selected', option === this.state.selected), _classNames));
 
@@ -122,16 +131,24 @@ var Dropdown = function (_Component) {
         'div',
         {
           key: value,
-          className: optionClass,
-          onMouseDown: this.setValue.bind(this, value, label),
-          onClick: this.setValue.bind(this, value, label) },
+          className: optionClass
+          //onMouseDown={this.setValue.bind(this, value, label)}
+          //onClick={this.setValue.bind(this, value, label)}
+          , onMouseDown: function onMouseDown(e) {
+            return _this2.handleOptionSelect(e, value, label);
+          },
+          onClick: function onClick(e) {
+            return _this2.handleOptionSelect(e, value, label);
+          }
+
+        },
         label
       );
     }
   }, {
     key: 'buildMenu',
     value: function buildMenu() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _props = this.props,
           options = _props.options,
@@ -145,7 +162,7 @@ var Dropdown = function (_Component) {
             option.name
           );
           var _options = option.items.map(function (item) {
-            return _this2.renderOption(item);
+            return _this3.renderOption(item);
           });
 
           return _react2.default.createElement(
@@ -155,7 +172,7 @@ var Dropdown = function (_Component) {
             _options
           );
         } else {
-          return _this2.renderOption(option);
+          return _this3.renderOption(option);
         }
       });
 
@@ -171,8 +188,6 @@ var Dropdown = function (_Component) {
       if (this.mounted) {
         if (!_reactDom2.default.findDOMNode(this).contains(event.target)) {
           this.setState({ isOpen: false });
-          event.stopPropagation();
-          event.preventDefault();
         }
       }
     }
