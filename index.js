@@ -92,7 +92,7 @@ class Dropdown extends Component {
         className={optionClass}
         //onMouseDown={this.setValue.bind(this, value, label)}
         //onClick={this.setValue.bind(this, value, label)}
-        onMouseDown={(e)=>this.handleOptionSelect(e,value, label)}
+        //onMouseDown={(e)=>this.handleOptionSelect(e,value, label)}
         onClick={(e)=>this.handleOptionSelect(e,value, label) }
         
         >
