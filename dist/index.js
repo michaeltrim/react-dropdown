@@ -171,6 +171,8 @@ var Dropdown = function (_Component) {
       if (this.mounted) {
         if (!_reactDom2.default.findDOMNode(this).contains(event.target)) {
           this.setState({ isOpen: false });
+          event.stopPropagation();
+          event.preventDefault();
         }
       }
     }
