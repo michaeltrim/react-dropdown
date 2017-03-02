@@ -91,7 +91,7 @@ var Dropdown = function (_Component) {
     }
   }, {
     key: 'handleOptionSelect',
-    value: function handleOptionSelect(e, value, lable) {
+    value: function handleOptionSelect(e, value, label) {
       e.stopPropagation();
       e.preventDefault();
       this.setValue(value, label);

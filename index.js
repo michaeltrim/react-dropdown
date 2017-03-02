@@ -53,7 +53,7 @@ class Dropdown extends Component {
     }
   }
 
-  handleOptionSelect(e, value, lable){
+  handleOptionSelect(e, value, label){
     e.stopPropagation()
     e.preventDefault()
     this.setValue(value,label);
